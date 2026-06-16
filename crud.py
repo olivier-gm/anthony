@@ -722,7 +722,7 @@ def get_porcentaje3(flag):
     if flag == False:
         return cantidad
     # Calcular el porcentaje
-    total = 10000
+    total = 100
     porcentaje = (cantidad / total) * 100
     return round(porcentaje, 2)
 
@@ -737,7 +737,7 @@ def get_porcentaje2(flag):
         return cantidad
 
     # Calcular el porcentaje
-    total = 10000
+    total = 100
     porcentaje = (cantidad / total) * 100
     return round(porcentaje, 2)
 
@@ -753,7 +753,7 @@ def get_porcentaje(flag):
         return cantidad
 
     # Calcular el porcentaje
-    total = 10000
+    total = 100
     porcentaje = (cantidad / total) * 100
     return round(porcentaje, 2)
 
