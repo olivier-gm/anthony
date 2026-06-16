@@ -18,16 +18,16 @@ cursor.execute("""
                );
 """)
 
-# Tabla "tickets_disponibles" (del 1 al 10.000)
+# Tabla "tickets_disponibles" (del 1 al 100)
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS tickets_disponibles (
     carton_disponible INTEGER PRIMARY KEY
 );""")
 
-# Insertar los cartones disponibles (1 al 10.000)
+# Insertar los cartones disponibles (1 al 100)
 cursor.executemany("""
 INSERT OR IGNORE INTO tickets_disponibles (carton_disponible) VALUES (?);
-""", [(i,) for i in range(0, 10000)])
+""", [(i,) for i in range(0, 100)])
 
 # Tabla "tickets_usados"
 cursor.execute("""
