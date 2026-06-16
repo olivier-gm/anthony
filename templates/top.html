@@ -75,7 +75,24 @@
                         <td class="clickable-cell">{{ solicitud.nombre }}</td>
                         <td class="clickable-cell">{{ solicitud.cedula }}</td>
                         <td class="clickable-cell">{{ solicitud.telefono }}</td>
-                        <td class="clickable-cell">{{ solicitud.cartones }}</td>
+                        <td class="clickable-cell">
+                            {% if solicitud.cartones is iterable and solicitud.cartones is not string %}
+                                {% for c in solicitud.cartones %}
+                                    {{ "%02d"|format((c|int) % 100) }}{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            {% elif solicitud.cartones is string %}
+                                {% set cleaned = solicitud.cartones.replace('[','').replace(']','').replace('"','').replace("'",'') %}
+                                {% set parts = cleaned.split(',') %}
+                                {% for p in parts %}
+                                    {% set v = p.strip() %}
+                                    {% if v %}
+                                        {{ "%02d"|format((v|int) % 100) }}{% if not loop.last %}, {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                {{ "%02d"|format((solicitud.cartones|int) % 100) }}
+                            {% endif %}
+                        </td>
                         <td class="clickable-cell">{{ solicitud.length }}</td>
                         <td class="clickable-cell">{{ solicitud.monto }}</td>
                     </tr>
@@ -156,7 +173,24 @@
                                 No hay comprobante
                             {% endif %}
                         </td>
-                        <td class="clickable-cell">{{ solicitud.cartones }}</td>
+                        <td class="clickable-cell">
+                            {% if solicitud.cartones is iterable and solicitud.cartones is not string %}
+                                {% for c in solicitud.cartones %}
+                                    {{ "%02d"|format((c|int) % 100) }}{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            {% elif solicitud.cartones is string %}
+                                {% set cleaned = solicitud.cartones.replace('[','').replace(']','').replace('"','').replace("'",'') %}
+                                {% set parts = cleaned.split(',') %}
+                                {% for p in parts %}
+                                    {% set v = p.strip() %}
+                                    {% if v %}
+                                        {{ "%02d"|format((v|int) % 100) }}{% if not loop.last %}, {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                {{ "%02d"|format((solicitud.cartones|int) % 100) }}
+                            {% endif %}
+                        </td>
                         <td class="clickable-cell">{{ solicitud.length }}</td>
                         <td class="clickable-cell">{{ solicitud.monto }}</td>
                         <td class="clickable-cell">{{ solicitud.fecha }}</td>

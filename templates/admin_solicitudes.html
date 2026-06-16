@@ -103,7 +103,7 @@
     {# Caso 1: lista/tupla real #}
     {% if solicitud.cartones is iterable and solicitud.cartones is not string %}
         {% for c in solicitud.cartones %}
-            {{ "%04d"|format(c|int) }}{% if not loop.last %}, {% endif %}
+            {{ "%02d"|format((c|int) % 100) }}{% if not loop.last %}, {% endif %}
         {% endfor %}
     {% elif solicitud.cartones is string %}
         {% set cleaned = solicitud.cartones.replace('[','').replace(']','').replace('"','').replace("'",'') %}
@@ -111,11 +111,11 @@
         {% for p in parts %}
             {% set v = p.strip() %}
             {% if v %}
-                {{ "%04d"|format(v|int) }}{% if not loop.last %}, {% endif %}
+                {{ "%02d"|format((v|int) % 100) }}{% if not loop.last %}, {% endif %}
             {% endif %}
         {% endfor %}
     {% else %}
-        {{ "%04d"|format(solicitud.cartones|int) }}
+        {{ "%02d"|format((solicitud.cartones|int) % 100) }}
     {% endif %}
 </td>                       
                         <td class="clickable-cell">{{ solicitud.monto }}</td>
