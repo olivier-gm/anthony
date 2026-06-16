@@ -51,7 +51,7 @@
         <p>Estos son los tickets que compraste:</p>
         <ul>
             {% for ticket in tickets %}
-                <li>{{ "%04d"|format(ticket|int) }}</li>
+                <li>{{ "%02d"|format((ticket|int) % 100) }}</li>
             {% endfor %}
         </ul>
     </div>
