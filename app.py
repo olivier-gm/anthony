@@ -146,7 +146,7 @@ def reiniciar():
 
     cursor.executemany("""
     INSERT OR IGNORE INTO tickets_disponibles (carton_disponible) VALUES (?);
-    """, [(i,) for i in range(0, 10000)])
+    """, [(i,) for i in range(0, 100)])
     conn.commit()
 
     conn.close()
