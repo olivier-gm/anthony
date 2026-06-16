@@ -226,7 +226,7 @@ function aprobar(button) {
 
 
                         // Construir el mensaje
-                        const mensaje = `Juega y Gana con Anthony!\nAquí está el link de tus tickets: https://www.juegayganaconanthony.com${link}`;
+                        const mensaje = `Rifas especiales!\nAquí está el link de tus tickets: https://www.rifasespeciales.site${link}`;
 
                         // Crear el URL para abrir WhatsApp con el mensaje
                         const whatsappURL = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
@@ -261,13 +261,13 @@ function aprobar(button) {
 
                             // Crea un campo de texto temporal para copiar el link
                             const tempInput = document.createElement("input");
-                            tempInput.value = `https://www.juegayganaconanthony.com${link}`;
+                            tempInput.value = `https://www.rifasespeciales.site${link}`;
                             document.body.appendChild(tempInput);
                             tempInput.select();
                             document.execCommand("copy");
                             document.body.removeChild(tempInput);
 
-                            alert("Link copiado al portapapeles: " + `https://www.juegayganaconanthony.com${link}`);
+                            alert("Link copiado al portapapeles: " + `https://www.rifasespeciales.site${link}`);
                         }
                     </script>
                     {% endfor %}
